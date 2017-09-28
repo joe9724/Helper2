@@ -28,6 +28,7 @@ public class SplashActivity extends AppCompatActivity  implements  View.OnClickL
         btn2 = (Button)findViewById(R.id.button2);
         btn2.setOnClickListener(this);
 
+        defaultDataArray = new ArrayList<String>();
 
     }
 
