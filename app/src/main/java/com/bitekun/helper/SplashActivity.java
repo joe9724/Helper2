@@ -30,6 +30,8 @@ public class SplashActivity extends AppCompatActivity  implements  View.OnClickL
 
         defaultDataArray = new ArrayList<String>();
 
+        startActivity(new Intent(SplashActivity.this,LoginActivity.class));
+
     }
 
     //

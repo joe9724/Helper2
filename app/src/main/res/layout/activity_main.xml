@@ -1,17 +1,139 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    tools:context="com.bitekun.hahelper.MainActivity" >
+    android:orientation="vertical"
+     >
 
-    <GridView
-        android:id="@+id/gv"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        
-        android:numColumns="2" >
+        android:layout_height="80dp"
+        android:background="#00673B">
 
-    </GridView>
+    </RelativeLayout>
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/layout_xcqd"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:background="#344a67">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="现场签到" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_kfcj"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:background="#ed4a43">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="康复采集" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_kfdx"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#00bb9d">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="150dp"
+            android:layout_marginRight="150dp"
+            android:text="康复对象" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/layout_wfwd"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:background="#ea7d38">
+
+            <TextView
+                android:id="@+id/textView41"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="我服务的" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:background="#299ad6">
+
+            <TextView
+                android:id="@+id/textView53"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="工作记录" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_yjfk"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#f4c145">
+
+        <TextView
+            android:id="@+id/textView62"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="150dp"
+            android:layout_marginRight="150dp"
+            android:text="意见反馈" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_zx"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#00a16a">
+
+        <TextView
+            android:id="@+id/textView61"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="150dp"
+            android:layout_marginRight="150dp"
+            android:text="注销登录" />
+    </RelativeLayout>
+</LinearLayout>

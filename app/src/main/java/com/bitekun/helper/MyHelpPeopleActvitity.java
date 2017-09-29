@@ -1,15 +1,10 @@
 package com.bitekun.helper;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.app.Activity;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,19 +13,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.bitekun.helper.R;
-import com.bitekun.helper.adapter.AdapterHelpPeople;
 import com.bitekun.helper.bean.HelpPeopleListItem;
 import com.bitekun.helper.util.CommonConst;
 import com.bitekun.helper.util.JsonUtil;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class HelpPeopleActvitity extends Activity {
+
+public class MyHelpPeopleActvitity extends Activity {
 
 	private ArrayList<HelpPeopleListItem> datalist = new ArrayList<HelpPeopleListItem>();
 
@@ -98,7 +93,7 @@ public class HelpPeopleActvitity extends Activity {
 
 		@Override
 		public LayoutAdapter.myViewholder onCreateViewHolder(ViewGroup parent, int viewType) {
-			myViewholder myViewholder = new myViewholder(LayoutInflater.from(HelpPeopleActvitity.this).inflate(R.layout.item_layout, parent, false));
+			myViewholder myViewholder = new myViewholder(LayoutInflater.from(MyHelpPeopleActvitity.this).inflate(R.layout.item_layout, parent, false));
 			return myViewholder;
 		}
 
@@ -111,7 +106,7 @@ public class HelpPeopleActvitity extends Activity {
 				@Override
 				public void onClick(View v) {
 
-					HelpPeopleActvitity.this.startActivity(new Intent(HelpPeopleActvitity.this,HelpPeopleDetail.class));
+					MyHelpPeopleActvitity.this.startActivity(new Intent(MyHelpPeopleActvitity.this,HelpPeopleDetail.class));
 				}
 			});
 		}
