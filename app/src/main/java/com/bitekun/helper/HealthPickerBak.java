@@ -50,118 +50,118 @@ import es.dmoral.toasty.Toasty;
 import me.nereo.multi_image_selector.MultiImageSelectorActivity;
 
 
-public class HealthPicker extends Activity implements View.OnClickListener {
+public class HealthPickerBak extends Activity implements View.OnClickListener {
 
     ImageView iv_livephoto,iv_recordphoto;
-    int REQUEST_IMAGE =1;
-    int REQUEST_IMAGE2 =2;
-    ArrayList<String> defaultDataArray,getDefaultDataArray2;
-    Intent intent;
-    Button btn_upload;
-    HelpPeopleListItem hp;
-    TextView tv_name,tv_sex,tv_age,tv_level,tv_tel,tv_kfxm,tv_kfjg,tv_type;
-    EditText et_record;
+	int REQUEST_IMAGE =1;
+	int REQUEST_IMAGE2 =2;
+	ArrayList<String> defaultDataArray,getDefaultDataArray2;
+	Intent intent;
+	Button btn_upload;
+	HelpPeopleListItem hp;
+	TextView tv_name,tv_sex,tv_age,tv_level,tv_tel,tv_kfxm,tv_kfjg,tv_type;
+	EditText et_record;
     RelativeLayout progressbar;
 
-    Spinner sp_kfxm,sp_kfjg;
+	Spinner sp_kfxm,sp_kfjg;
 
-    String kfxm,kfjg;
+	String kfxm,kfjg;
 
-    ScrollView sv;
+	ScrollView sv;
 
-    HashMap<String,List<String>> hash;
+	HashMap<String,List<String>> hash;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.health_picker);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.health_picker);
 
 
-        hp = (HelpPeopleListItem) getIntent().getSerializableExtra("item");
-        tv_name = (TextView)findViewById(R.id.tv_name);
-        tv_sex = (TextView)findViewById(R.id.tv_sex);
-        tv_age = (TextView)findViewById(R.id.tv_age);
-        tv_level = (TextView)findViewById(R.id.tv_level);
-        tv_tel = (TextView)findViewById(R.id.tv_tel);
-        tv_kfxm = (TextView)findViewById(R.id.tv_kfxm);
-        tv_kfjg = (TextView)findViewById(R.id.tv_kfjg);
-        tv_type = (TextView)findViewById(R.id.tv_type);
+		hp = (HelpPeopleListItem) getIntent().getSerializableExtra("item");
+		tv_name = (TextView)findViewById(R.id.tv_name);
+		tv_sex = (TextView)findViewById(R.id.tv_sex);
+		tv_age = (TextView)findViewById(R.id.tv_age);
+		tv_level = (TextView)findViewById(R.id.tv_level);
+		tv_tel = (TextView)findViewById(R.id.tv_tel);
+		tv_kfxm = (TextView)findViewById(R.id.tv_kfxm);
+		tv_kfjg = (TextView)findViewById(R.id.tv_kfjg);
+		tv_type = (TextView)findViewById(R.id.tv_type);
 
-        tv_name.setText(hp.getName());
-        tv_sex.setText(hp.getGender().equals("1")?"男":"女");
-        tv_age.setText(hp.getAge()+"岁");
-        tv_level.setText(hp.getDisableLevel());
-        tv_tel.setText(hp.getPhone());
-        tv_kfxm.setText(hp.getKfxm());
-        tv_kfjg.setText(hp.getKfjg());
-        tv_type.setText(hp.getDisableModeId());
+		tv_name.setText(hp.getName());
+		tv_sex.setText(hp.getGender().equals("1")?"男":"女");
+		tv_age.setText(hp.getAge()+"岁");
+		tv_level.setText(hp.getDisableLevel());
+		tv_tel.setText(hp.getPhone());
+		tv_kfxm.setText(hp.getKfxm());
+		tv_kfjg.setText(hp.getKfjg());
+		tv_type.setText(hp.getDisableModeId());
 
-        sv = (ScrollView)findViewById(R.id.scroll);
+		sv = (ScrollView)findViewById(R.id.scroll);
         sv.smoothScrollTo(0,20);
 
-        progressbar = (RelativeLayout)findViewById(R.id.progressbarlayout);
+		progressbar = (RelativeLayout)findViewById(R.id.progressbarlayout);
 
-        //康复项目
+		//康复项目
         sp_kfxm = (Spinner)findViewById(R.id.sp_kfxm);
         sp_kfjg = (Spinner)findViewById(R.id.sp_kfjg);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.kfxm));
-        sp_kfxm.setAdapter(adapter);
-        sp_kfxm.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.kfxm));
+		sp_kfxm.setAdapter(adapter);
+		sp_kfxm.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view,
-                                       int position, long id) {
-                Object item = adapterView.getItemAtPosition(position);
-                if (item != null) {
-                    kfxm = item.toString();
+			@Override
+			public void onItemSelected(AdapterView<?> adapterView, View view,
+									   int position, long id) {
+				Object item = adapterView.getItemAtPosition(position);
+				if (item != null) {
+					kfxm = item.toString();
                     setkfjg(kfxm);
-                }
+				}
 
 
-            }
+			}
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                // TODO Auto-generated method stub
+			@Override
+			public void onNothingSelected(AdapterView<?> adapterView) {
+				// TODO Auto-generated method stub
 
-            }
-        });
+			}
+		});
 
 
-        iv_livephoto = (ImageView)findViewById(R.id.iv_livephoto);
-        iv_recordphoto = (ImageView)findViewById(R.id.iv_recordphoto);
+		iv_livephoto = (ImageView)findViewById(R.id.iv_livephoto);
+		iv_recordphoto = (ImageView)findViewById(R.id.iv_recordphoto);
 
-        iv_livephoto.setOnClickListener(this);
-        iv_recordphoto.setOnClickListener(this);
-        btn_upload = (Button)findViewById(R.id.btn_upload);
-        btn_upload.setOnClickListener(this);
+		iv_livephoto.setOnClickListener(this);
+		iv_recordphoto.setOnClickListener(this);
+		btn_upload = (Button)findViewById(R.id.btn_upload);
+		btn_upload.setOnClickListener(this);
 
-        defaultDataArray = new ArrayList<String>();
-        getDefaultDataArray2 = new ArrayList<String>();
+		defaultDataArray = new ArrayList<String>();
+		getDefaultDataArray2 = new ArrayList<String>();
 
-        ImageView iv_back;
-        iv_back = (ImageView)findViewById(R.id.iv_back);
-        iv_back.setOnClickListener(new View.OnClickListener() {
+		ImageView iv_back;
+		iv_back = (ImageView)findViewById(R.id.iv_back);
+		iv_back.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                finish();
+			@Override
+			public void onClick(View v) {
+				finish();
 
-            }
-        });
+			}
+		});
 
-        livepath = new ArrayList<String>();
-        recordpath = new ArrayList<String>();
+		livepath = new ArrayList<String>();
+		recordpath = new ArrayList<String>();
 
-        et_record = (EditText)findViewById(R.id.et_record);
+		et_record = (EditText)findViewById(R.id.et_record);
         //et_record.setFocusable(false);
 
 
 
-    }
+	}
 
-    private void setkfjg(String kfxm) {
+	private void setkfjg(String kfxm) {
 
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(Urls.hash+kfxm.trim(), new AsyncHttpResponseHandler() {
@@ -171,7 +171,7 @@ public class HealthPicker extends Activity implements View.OnClickListener {
                 {
                     if (Utils.byteArrayToStr(responseBody).equals("error"))
                     {
-                        Toasty.success(HealthPicker.this, "发生错误!", Toast.LENGTH_SHORT, true).show();
+						Toasty.success(HealthPickerBak.this, "发生错误!", Toast.LENGTH_SHORT, true).show();
                         return;
                     }
                     try {
@@ -185,7 +185,7 @@ public class HealthPicker extends Activity implements View.OnClickListener {
                             }
                             String[] stockArr = new String[temp.size()];
                             stockArr = temp.toArray(stockArr);
-                            ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(HealthPicker.this,
+                            ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(HealthPickerBak.this,
                                     android.R.layout.simple_spinner_item, stockArr);
                             sp_kfjg.setAdapter(adapter2);
                             sp_kfjg.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -220,21 +220,21 @@ public class HealthPicker extends Activity implements View.OnClickListener {
 
             @Override
             public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
-                Toasty.error(HealthPicker.this, "err222!", Toast.LENGTH_SHORT, true).show();
+                Toasty.error(HealthPickerBak.this, "err222!", Toast.LENGTH_SHORT, true).show();
             }
         });
 
     }
 
-    Map<String,String> txt;
-    ArrayList<String> temp;
+	Map<String,String> txt;
+	ArrayList<String> temp;
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId())
-        {
-            case R.id.btn_upload:
-                //test is server reached
+	@Override
+	public void onClick(View view) {
+		switch (view.getId())
+		{
+			case R.id.btn_upload:
+			    //test is server reached
                 AsyncHttpClient client = new AsyncHttpClient();
                 client.setTimeout(4000);
                 //lists.clear();
@@ -245,30 +245,30 @@ public class HealthPicker extends Activity implements View.OnClickListener {
                         {
                             if(Utils.byteArrayToStr(responseBody).equals("ok"))
                             {
-                                Toasty.success(HealthPicker.this, "网络环境OK!", Toast.LENGTH_SHORT, true).show();
+                                Toasty.success(HealthPickerBak.this, "网络环境OK!", Toast.LENGTH_SHORT, true).show();
                                 //
                                 try
                                 {
                                     if(kfxm.equals("")||kfxm==null||kfjg.equals("")||kfjg==null||kfxm.length()<4||kfjg.length()<4)
                                     {
                                         //Toast.makeText(HealthPicker.this,"请选择康复项目和康复机构",Toast.LENGTH_SHORT).show();
-                                        Toasty.error(HealthPicker.this, "请选择康复项目和康复机构!", Toast.LENGTH_SHORT, true).show();
+                                        Toasty.error(HealthPickerBak.this, "请选择康复项目和康复机构!", Toast.LENGTH_SHORT, true).show();
                                         return;
                                     }
                                 }catch (Exception e)
                                 {
-                                    Toasty.error(HealthPicker.this, "请选择康复项目和康复机构!", Toast.LENGTH_SHORT, true).show();
+                                    Toasty.error(HealthPickerBak.this, "请选择康复项目和康复机构!", Toast.LENGTH_SHORT, true).show();
                                     return;
                                 }
 
                                 if (et_record.getText().toString().length()<1)
                                 {
-                                    Toasty.error(HealthPicker.this, "请填写记录!", Toast.LENGTH_SHORT, true).show();
+                                    Toasty.error(HealthPickerBak.this, "请填写记录!", Toast.LENGTH_SHORT, true).show();
                                     return;
                                 }
                                 if (livepath.size()<1||recordpath.size()<1)
                                 {
-                                    Toasty.error(HealthPicker.this, "需要上传2张照片!", Toast.LENGTH_SHORT, true).show();
+                                    Toasty.error(HealthPickerBak.this, "需要上传2张照片!", Toast.LENGTH_SHORT, true).show();
                                     return;
                                 }
                                 txt = new HashMap<String, String>();
@@ -319,25 +319,25 @@ public class HealthPicker extends Activity implements View.OnClickListener {
                                         progressbar.setVisibility(View.GONE);
                                         if(resultstr==null)
                                         {
-                                            Toasty.error(HealthPicker.this, "服务器返回null!", Toast.LENGTH_SHORT, true).show();
+                                            Toasty.error(HealthPickerBak.this, "服务器返回null!", Toast.LENGTH_SHORT, true).show();
                                             return;
                                         }
                                         if(resultstr.equals("notMultipartForm"))
                                         {
-                                            Toasty.error(HealthPicker.this, "notMultipartForm!", Toast.LENGTH_SHORT, true).show();
+                                            Toasty.error(HealthPickerBak.this, "notMultipartForm!", Toast.LENGTH_SHORT, true).show();
                                         }else if(resultstr.equals("noUploadfile"))
                                         {
-                                            Toasty.error(HealthPicker.this, "需要上传2张图片!", Toast.LENGTH_SHORT, true).show();
+                                            Toasty.error(HealthPickerBak.this, "需要上传2张图片!", Toast.LENGTH_SHORT, true).show();
 
                                         }
                                         else if(resultstr.equals("error"))
                                         {
-                                            Toasty.error(HealthPicker.this, "upsert err!", Toast.LENGTH_SHORT, true).show();
+                                            Toasty.error(HealthPickerBak.this, "upsert err!", Toast.LENGTH_SHORT, true).show();
 
                                         }
                                         else if(resultstr.equals("ok"))
                                         {
-                                            Toasty.success(HealthPicker.this, "采集成功!", Toast.LENGTH_SHORT, true).show();
+                                            Toasty.success(HealthPickerBak.this, "采集成功!", Toast.LENGTH_SHORT, true).show();
                                             new Handler().postDelayed(new Runnable(){
                                                 public void run() {
                                                     finish();
@@ -351,25 +351,25 @@ public class HealthPicker extends Activity implements View.OnClickListener {
                             }
                             else
                             {
-                                Toasty.success(HealthPicker.this, "连接服务器失败!", Toast.LENGTH_SHORT, true).show();
+                                Toasty.success(HealthPickerBak.this, "连接服务器失败!", Toast.LENGTH_SHORT, true).show();
                             }
                         }
                     }
 
                     @Override
                     public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
-                        Toasty.success(HealthPicker.this, "连接服务器failure!", Toast.LENGTH_SHORT, true).show();
+                        Toasty.success(HealthPickerBak.this, "连接服务器failure!", Toast.LENGTH_SHORT, true).show();
                     }
                 });
 
 
 
-                break;
+				break;
 
-            case R.id.iv_livephoto:
-                //申请readextenalstorage权限
-                requestLocation();
-                if(canreadpic) {
+			case R.id.iv_livephoto:
+			    //申请readextenalstorage权限
+requestLocation();
+			    if(canreadpic) {
 
                     intent = new Intent(this, MultiImageSelectorActivity.class);
 // 是否显示调用相机拍照
@@ -382,11 +382,11 @@ public class HealthPicker extends Activity implements View.OnClickListener {
                     intent.putStringArrayListExtra(MultiImageSelectorActivity.EXTRA_DEFAULT_SELECTED_LIST, defaultDataArray);
                     startActivityForResult(intent, REQUEST_IMAGE);
                 }else{
-                    Toasty.error(HealthPicker.this, "应用需要授权访问存储!", Toast.LENGTH_SHORT, true).show();
+                    Toasty.error(HealthPickerBak.this, "应用需要授权访问存储!", Toast.LENGTH_SHORT, true).show();
                 }
-                break;
+				break;
 
-            case R.id.iv_recordphoto:
+			case R.id.iv_recordphoto:
                 requestLocation();
                 if(canreadpic) {
                     intent = new Intent(this, MultiImageSelectorActivity.class);
@@ -401,12 +401,12 @@ public class HealthPicker extends Activity implements View.OnClickListener {
                     startActivityForResult(intent, REQUEST_IMAGE2);
                 }
                 else{
-                    Toasty.error(HealthPicker.this, "应用需要授权访问存储!", Toast.LENGTH_SHORT, true).show();
+                    Toasty.error(HealthPickerBak.this, "应用需要授权访问存储!", Toast.LENGTH_SHORT, true).show();
                 }
-                break;
-        }
-    }
-    public boolean canreadpic = false;
+				break;
+		}
+	}
+public boolean canreadpic = false;
     private void requestLocation() {
         if (PermissionsUtil.hasPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
             //Toast.makeText(MainActivity.this, "已授权定位权限 开始定位", Toast.LENGTH_LONG).show();
@@ -424,65 +424,65 @@ public class HealthPicker extends Activity implements View.OnClickListener {
                 @Override
                 public void permissionDenied(@NonNull String[] permissions) {
                     canreadpic = false;
-                    Toast.makeText(HealthPicker.this, "用户拒绝了访问媒体权限,无法选择图片!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(HealthPickerBak.this, "用户拒绝了访问媒体权限,无法选择图片!", Toast.LENGTH_LONG).show();
                 }
             }, Manifest.permission.READ_EXTERNAL_STORAGE);
         }
     }
-    public static ArrayList<String> livepath,recordpath;
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_IMAGE){
-            if(resultCode == RESULT_OK){
-                // 获取返回的图片列表
-                ArrayList<String> path = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
+public static ArrayList<String> livepath,recordpath;
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if(requestCode == REQUEST_IMAGE){
+			if(resultCode == RESULT_OK){
+				// 获取返回的图片列表
+				ArrayList<String> path = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
                 livepath = path;
-                // 处理你自己的逻辑 ....
-                //Toast.makeText(HealthPicker.this,path.get(0),Toast.LENGTH_SHORT).show();
-                //显示选中的图片
+				// 处理你自己的逻辑 ....
+				//Toast.makeText(HealthPicker.this,path.get(0),Toast.LENGTH_SHORT).show();
+				//显示选中的图片
                 Tiny.FileCompressOptions options = new Tiny.FileCompressOptions();
                 Tiny.getInstance().source(path.get(0)).asFile().withOptions(options).compress(new FileCallback() {
                     @Override
                     public void callback(boolean isSuccess, String outfile) {
                         if (isSuccess) {
-                            Glide.with(HealthPicker.this).load(outfile).placeholder(R.drawable.ic_launcher).error(R.drawable.takephoto).centerCrop().crossFade().into(iv_livephoto);
-                            //livepath.clear();
-                            //livepath.add(outfile);
+                            Glide.with(HealthPickerBak.this).load(outfile).placeholder(R.drawable.ic_launcher).error(R.drawable.takephoto).centerCrop().crossFade().into(iv_livephoto);
+                            livepath.clear();
+                            livepath.add(outfile);
                         }
                     }
                 });
 
 
 
-            }
-        }else if(requestCode == REQUEST_IMAGE2){
-            if(resultCode == RESULT_OK){
-                // 获取返回的图片列表
-                ArrayList<String> path = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
-                recordpath = path;
-                // 处理你自己的逻辑 ....
-                //Toast.makeText(HealthPicker.this,path.get(0),Toast.LENGTH_SHORT).show();
+			}
+		}else if(requestCode == REQUEST_IMAGE2){
+			if(resultCode == RESULT_OK){
+				// 获取返回的图片列表
+				ArrayList<String> path = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
+				recordpath = path;
+				// 处理你自己的逻辑 ....
+				//Toast.makeText(HealthPicker.this,path.get(0),Toast.LENGTH_SHORT).show();
                 Tiny.FileCompressOptions options = new Tiny.FileCompressOptions();
                 Tiny.getInstance().source(path.get(0)).asFile().withOptions(options).compress(new FileCallback() {
                     @Override
                     public void callback(boolean isSuccess, String outfile) {
                         if (isSuccess) {
-                            Glide.with(HealthPicker.this).load(outfile).placeholder(R.drawable.ic_launcher).error(R.drawable.takephoto).centerCrop().crossFade().into(iv_recordphoto);
-                            //recordpath.clear();
-                            //recordpath.add(outfile);
+                            Glide.with(HealthPickerBak.this).load(outfile).placeholder(R.drawable.ic_launcher).error(R.drawable.takephoto).centerCrop().crossFade().into(iv_recordphoto);
+                            recordpath.clear();
+                            recordpath.add(outfile);
                         }
                     }
                 });
 
-            }
-        }
-    }
+			}
+		}
+	}
 
-    //
-    public String postWithFiles(String actionUrl, Map<String, String> textParams, List<String> filePaths) {
+	//
+	public String postWithFiles(String actionUrl, Map<String, String> textParams, List<String> filePaths) {
 
-        try
+	    try
         {
           /*  if (android.os.Build.VERSION.SDK_INT > 9) {
                 try
@@ -586,20 +586,20 @@ public class HealthPicker extends Activity implements View.OnClickListener {
 
                 return resultSb == null ? null : resultSb.toString();
             } catch (IOException e) {
-                Toasty.error(HealthPicker.this, "err!"+e.getMessage(), Toast.LENGTH_SHORT, true).show();
+                Toasty.error(HealthPickerBak.this, "err!"+e.getMessage(), Toast.LENGTH_SHORT, true).show();
                 return null;
                 //Toast.makeText(, "", Toast.LENGTH_SHORT).show();
             }
         }
         catch(Exception e)
         {
-            Toasty.error(HealthPicker.this, "提交发生错误了err!"+e.getMessage(), Toast.LENGTH_SHORT, true).show();
+            Toasty.error(HealthPickerBak.this, "提交发生错误了err!"+e.getMessage(), Toast.LENGTH_SHORT, true).show();
         }
 
-        return null;
+    return null;
 
-    }
+	}
 
-    //
+	//
 
 }

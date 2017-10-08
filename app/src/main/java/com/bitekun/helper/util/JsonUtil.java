@@ -74,7 +74,7 @@ public class JsonUtil {
 				for (int i = 0; i < jsonArray.length(); i++) {
 					jsonObj = jsonArray.getJSONObject(i);
 					detailBean = new HelpPeopleListItem();
-					detailBean.setID(jsonObj.getString("id"));
+					//detailBean.setID(jsonObj.getString("id"));
 					detailBean.setName(jsonObj.getString("workerName"));
 					list.add(detailBean);
 				}

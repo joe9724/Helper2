@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="kfxm">
+        <item>请选择</item>
+        <item>白内障复明手术</item>
+        <item>辅助器具适配及服务</item>
+        <item>定向行走及适应训练</item>
+        <item>支持性服务</item>
+        <item>辅助器具适配及服务※</item>
+        <item>视功能训练</item>
+        <item>人工耳蜗植入手术及服务※</item>
+        <item>助听器适配及服务※</item>
+        <item>听觉言语功能训练</item>
+        <item>辅助器具适配及适应训练</item>
+        <item>矫治手术※</item>
+        <item>运动及适应训练</item>
+        <item>康复治疗及训练</item>
+        <item>认知及适应训练</item>
+        <item>沟通及适应训练</item>
+        <item>精神疾病治疗</item>
+        <item>精神障碍作业疗法训练</item>
+    </string-array>
+
+    <string-array name="kfjg">
+
+        <item>金湖县人民医院</item>
+        <item>政府采购中标单位</item>
+        <item>各社区康复室（站）</item>
+        <item>金湖县残疾人康复中心</item>
+        <item>金湖县中医院</item>
+        <item>省定点机构</item>
+        <item>各镇残疾人之家</item>
+        <item>金湖人民医院或淮安市第三人民医院</item>
+    </string-array>
+
+</resources>

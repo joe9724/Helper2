@@ -1,29 +1,65 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/top"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/top1"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff">
 
     <RelativeLayout
+        android:id="@+id/top"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        tools:background="#00673B">
+        android:layout_height="55dp"
+        android:background="#00673B">
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="现场签到"
+
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/iv_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/back"
+            />
+
     </RelativeLayout>
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/et_password"
+        android:id="@+id/btn_sign"
+        android:layout_width="180dp"
+        android:layout_height="35dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="65dp"
+        android:layout_marginBottom="10dp"
+        android:textColor="#fff"
+        android:background="@drawable/btncorner"
         android:text="签到" />
     <com.amap.api.maps2d.MapView
         android:id="@+id/map"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </com.amap.api.maps2d.MapView>
-</LinearLayout>
+        android:layout_above="@id/tv_loc"
+        android:layout_below="@id/top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></com.amap.api.maps2d.MapView>
+
+    <TextView
+        android:id="@+id/tv_loc"
+        android:textColor="#000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_above="@+id/btn_sign"
+        android:layout_centerHorizontal="true"
+
+        android:text="当前位置:定位中" />
+
+
+
+</RelativeLayout>

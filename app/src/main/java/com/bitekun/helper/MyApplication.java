@@ -12,10 +12,19 @@ import android.view.Display;
 import android.view.WindowManager;
 
 import com.bitekun.helper.bean.JsonContent;
+import com.zxy.tiny.Tiny;
+
+
 
 public class MyApplication extends Application {
 	public static int phonewidth, phoneheight;
 	public static final Map<String, JsonContent> FAT_DATAMAP = new HashMap<String, JsonContent>();
+	public static String currentUserName;
+	public static String rolename;
+	public static String workerId;
+	public static String currentArea;
+
+
 
 	@SuppressWarnings("deprecation")
 	@Override
@@ -28,6 +37,8 @@ public class MyApplication extends Application {
 		Display display = manage.getDefaultDisplay();
 		phonewidth = display.getWidth();
 		phoneheight = display.getHeight();
+
+        Tiny.getInstance().init(this);
 	}
 
 }

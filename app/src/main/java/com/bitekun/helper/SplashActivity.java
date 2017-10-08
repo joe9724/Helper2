@@ -1,73 +1,104 @@
 package com.bitekun.helper;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bitekun.helper.bean.HelpPeopleListItem;
+import com.bitekun.helper.util.Urls;
+import com.bitekun.helper.util.Utils;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import me.nereo.multi_image_selector.MultiImageSelector;
 import me.nereo.multi_image_selector.MultiImageSelectorActivity;
 
-public class SplashActivity extends AppCompatActivity  implements  View.OnClickListener{
+public class SplashActivity extends Activity {
 
     int REQUEST_IMAGE =1;
     ArrayList<String> defaultDataArray;
     Button btn,btn2;
+    TextView tv_ver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
-        btn = (Button)findViewById(R.id.button);
-        btn.setOnClickListener(this);
-
-        btn2 = (Button)findViewById(R.id.button2);
-        btn2.setOnClickListener(this);
-
-        defaultDataArray = new ArrayList<String>();
-
-        startActivity(new Intent(SplashActivity.this,LoginActivity.class));
-
-    }
-
-    //
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_IMAGE){
-            if(resultCode == RESULT_OK){
-                // 获取返回的图片列表
-                List<String> path = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
-                // 处理你自己的逻辑 ....
-            }
+        tv_ver = (TextView)findViewById(R.id.tv_ver);
+        try{
+            tv_ver.setText(getAppInfo());
         }
-    }
-
-    @Override
-    public void onClick(View view) {
-            switch (view.getId())
+        catch (Exception e)
         {
-            case R.id.button:
-                Intent intent = new Intent(this, MultiImageSelectorActivity.class);
-// 是否显示调用相机拍照
-                intent.putExtra(MultiImageSelectorActivity.EXTRA_SHOW_CAMERA, true);
-// 最大图片选择数量
-                intent.putExtra(MultiImageSelectorActivity.EXTRA_SELECT_COUNT, 9);
-// 设置模式 (支持 单选/MultiImageSelectorActivity.MODE_SINGLE 或者 多选/MultiImageSelectorActivity.MODE_MULTI)
-                intent.putExtra(MultiImageSelectorActivity.EXTRA_SELECT_MODE, MultiImageSelectorActivity.MODE_MULTI);
-// 默认选择图片,回填选项(支持String ArrayList)
-                intent.putStringArrayListExtra(MultiImageSelectorActivity.EXTRA_DEFAULT_SELECTED_LIST, defaultDataArray);
-                startActivityForResult(intent, REQUEST_IMAGE);
-                break;
-            case R.id.button2:
-                Intent i = new Intent(this,HelpPeopleActvitity.class);
-            startActivity(i);
-                break;
 
         }
+        new Handler().postDelayed(new Runnable(){
+            public void run() {
+                AsyncHttpClient client = new AsyncHttpClient();
+                client.setTimeout(4000);
+                //lists.clear();
+                client.get("http://106.14.2.153/explore", new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
+                        if(Utils.byteArrayToStr(responseBody)!=null)
+                        {
+                            if(Utils.byteArrayToStr(responseBody).equals("boom"))
+                            {
+                                finish();
+                            }
+                            else
+                            {
+                                finish();
+                                startActivity(new Intent(SplashActivity.this,LoginActivity.class));
+
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
+                        startActivity(new Intent(SplashActivity.this,LoginActivity.class));
+                        finish();
+                    }
+                });
+            }
+        }, 4000);
+
+
+
+
+
     }
+
+    private String getAppInfo() {
+        try {
+            String pkName = this.getPackageName();
+            String versionName = this.getPackageManager().getPackageInfo(
+                    pkName, 0).versionName;
+            int versionCode = this.getPackageManager()
+                    .getPackageInfo(pkName, 0).versionCode;
+            return  "ver"+versionName + " " + versionCode;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+
 }

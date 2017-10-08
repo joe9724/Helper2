@@ -9,20 +9,33 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        tools:background="#00673B">
+        android:layout_height="55dp"
+        android:background="#00673B">
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:text="意见反馈"
+
+            android:textSize="20sp"
+            android:textColor="#fff" />
+
+        <ImageButton
+            android:id="@+id/iv_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
             android:layout_centerVertical="true"
-            android:text="意见反馈" />
+            android:background="@drawable/back"
+             />
+
     </RelativeLayout>
 
     <TextView
         android:id="@+id/textView12"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="您有什么意见或建议想对我们说" />
@@ -31,30 +44,41 @@
         android:id="@+id/et_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="您的主题是"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/et_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
+        android:gravity="top"
         android:hint="您的宝贵意见，是我们进步的源泉"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:inputType="textPersonName" />
 
-    <TextView
+    <TextView android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/textView13"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="请详细描述您遇到的问题" />
+        android:text="请详细描述您遇到的问题,有助于我们快速定位并解决问题，或留下您宝贵的建议或意见，我们会认真的进行评估!" />
 
     <Button
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
         android:id="@+id/btn_submit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:textColor="#fff"
+        android:layout_height="35dp"
+        android:background="@drawable/btncorner"
         android:text="提交反馈" />
 
 </LinearLayout>

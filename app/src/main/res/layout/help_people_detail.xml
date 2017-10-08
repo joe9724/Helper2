@@ -1,220 +1,290 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="wrap_content">
+    android:background="#fff"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#00673B">
+        <ImageButton
+            android:id="@+id/iv_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/back"
+            />
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:text="介绍"
+            android:textColor="#fff" />
 
-
-
+    </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:layout_height="100dp">
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="15dp"
+android:layout_gravity="center"
+            android:src="@drawable/defaultavatar" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="20sp"
+                    android:textColor="#000"
+                    android:text="姓名" />
+                <TextView
+                    android:id="@+id/tv_sex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp" android:textColor="#000"
+                    android:text="男" />
+                <TextView
+                    android:id="@+id/tv_age"
+                    android:layout_width="match_parent" android:layout_marginLeft="10dp"
+                    android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:textColor="#000"
+                    android:text="35岁" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical" android:textColor="#000"
+                    android:text="出生日期:" />
+
+                <TextView
+                    android:id="@+id/tv_birth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical" android:textColor="#000"
+                    android:layout_marginLeft="10dp"
+                    android:text="1981/11/9" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"  android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textView92"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:textColor="#000"
+            android:text="联系电话:" />
+        <TextView
+            android:id="@+id/tv_tel"
+            android:layout_width="match_parent" android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:textColor="#000"
+            android:text="189xxxxxxxx" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"  android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textView93"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:textColor="#000"
+            android:text="身份证号:" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/tv_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            tools:text="@string/app_name" />
-
+            android:layout_gravity="center_vertical" android:textColor="#000"
+            android:layout_marginLeft="10dp"
+            android:text="xxxx xx xx" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/textView91"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            tools:text="出生日期" />
+            android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:textColor="#000"
+            android:text="残疾证号:" />
+        <TextView
+            android:id="@+id/tv_no"
+            android:layout_width="match_parent" android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:textColor="#000"
+            android:text="320xxxx" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:orientation="horizontal">
-
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/textView911"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="联系电话" />
-
+            android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:textColor="#000"
+            android:text="家庭地址:" />
         <TextView
-            android:id="@+id/textView1021"
+            android:id="@+id/tv_addr"
+            android:layout_width="match_parent" android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:textColor="#000"
+            android:text="320xxxx" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#ccc"
+        android:orientation="horizontal">
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textView43"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            tools:text="111111" />
+            android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:textColor="#000"
+            android:text="残疾类型:" />
+        <TextView
+            android:id="@+id/tv_type"
+            android:layout_width="match_parent" android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:textColor="#000"
+            android:text="320xxxx" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textView413"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:textColor="#000"
+            android:text="残疾类别:" />
+        <TextView
+            android:id="@+id/tv_class"
+            android:layout_width="match_parent" android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:textColor="#000"
+            android:text="320xxxx" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textView433"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:textColor="#000"
+            android:text="残疾等级:" />
+        <TextView
+            android:id="@+id/tv_level"
+            android:layout_width="match_parent" android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:textColor="#000"
+            android:text="320xxxx" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#ccc"
+        android:orientation="horizontal">
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textView55"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:textColor="#000"
+            android:text="监护人姓名:" />
 
         <TextView
-            android:id="@+id/textView130"
+            android:id="@+id/tv_guardname" android:textColor="#000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="身份证号" />
-
-        <TextView
-            android:id="@+id/textView101"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            tools:text="111111" />
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:text="320xxxx" />
     </LinearLayout>
-
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textView56"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:textColor="#000"
+            android:text="监护人电话:" />
 
         <TextView
-            android:id="@+id/textView102"
+            android:id="@+id/tv_guardphone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="残疾证号" />
-
-        <TextView
-            android:id="@+id/textView1013"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            tools:text="111111" />
+            android:layout_gravity="center_vertical" android:textColor="#000"
+            android:layout_marginLeft="10dp"
+            android:text="320xxxx" />
     </LinearLayout>
-
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:orientation="horizontal">
-
         <TextView
-            android:id="@+id/textView104"
+            android:id="@+id/textView57"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="家庭地址" />
-
+            android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:textColor="#000"
+            android:text="与残疾人关系:" />
         <TextView
-            android:id="@+id/textView1051"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            tools:text="111111" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView1630"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="残疾人类型" />
-
-        <TextView
-            android:id="@+id/textView1601"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            tools:text="111111" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView1502"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="残疾类别" />
-
-        <TextView
-            android:id="@+id/textView15013"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            tools:text="111111" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView1404"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="残疾等级" />
-
-        <TextView
-            android:id="@+id/textView14051"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            tools:text="111111" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView3130"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="监护人姓名" />
-
-        <TextView
-            android:id="@+id/textView1301"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            tools:text="111111" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView1102"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="监护人电话" />
-
-        <TextView
-            android:id="@+id/textView11013"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            tools:text="111111" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView2104"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="与残疾人关系" />
-
-        <TextView
-            android:id="@+id/textView12051"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            tools:text="111111" />
+            android:id="@+id/tv_relation"
+            android:layout_width="match_parent" android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:textColor="#000"
+            android:text="320xxxx" />
     </LinearLayout>
 </LinearLayout>

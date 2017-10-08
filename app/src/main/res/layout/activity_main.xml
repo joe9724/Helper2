@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="55dp"
         android:background="#00673B">
 
         <TextView
@@ -21,29 +21,34 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
-            android:text="location" />
+            android:text="定位位置"
+            android:textColor="#fff" />
+      <!--  <scut.carson_ho.searchview.SearchView
+            android:layout_toRightOf="@id/textView14"
+            android:id="@+id/search_view"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:textSizeSearch="5dp"
+            app:textColorSearch="#3F51B5"
+            app:textHintSearch="输入查询关键字"
+            android:background="#00673B"
 
+            />-->
     </RelativeLayout>
-    <scut.carson_ho.searchview.SearchView
-        android:id="@+id/search_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:textSizeSearch="5dp"
-        app:textColorSearch="#3F51B5"
-        app:textHintSearch="输入查询关键字"
-        app:searchBlockHeight="150"
-        app:searchBlockColor="#ffffff"
-        />
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
         android:orientation="horizontal">
 
         <RelativeLayout
             android:id="@+id/layout_xcqd"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:background="#344a67">
+            android:layout_width="wrap_content"
+            android:background="#ed4a43"
+            android:layout_height="wrap_content"
+            >
 
             <TextView
                 android:id="@+id/textView5"
@@ -51,14 +56,16 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:text="现场签到" />
+                android:text="现场签到"
+                android:textColor="#fff"
+                android:textSize="20sp" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/layout_kfcj"
             android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:background="#ed4a43">
+            android:layout_height="match_parent" android:background="#344a67"
+            >
 
             <TextView
                 android:id="@+id/textView4"
@@ -66,36 +73,36 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:text="康复采集" />
+                android:text="签到记录"
+                android:textColor="#fff"
+                android:textSize="20sp" />
         </RelativeLayout>
     </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/layout_kfdx"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="#00bb9d">
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="150dp"
-            android:layout_marginRight="150dp"
-            android:text="康复对象" />
+            android:layout_centerInParent="true"
+            android:text="康复对象"
+            android:textColor="#fff"
+            android:textSize="20sp" />
     </RelativeLayout>
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <RelativeLayout
             android:id="@+id/layout_wfwd"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="#ea7d38">
 
             <TextView
@@ -104,12 +111,15 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:text="我服务的" />
+                android:text="我服务的"
+                android:textColor="#fff"
+                android:textSize="20sp" />
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
+            android:id="@+id/layout_yjfk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="#299ad6">
 
             <TextView
@@ -118,43 +128,33 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:text="工作记录" />
+                android:text="意见反馈"
+                android:textColor="#fff"
+                android:textSize="20sp" />
         </RelativeLayout>
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/layout_yjfk"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="#f4c145">
-
-        <TextView
-            android:id="@+id/textView62"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="150dp"
-            android:layout_marginRight="150dp"
-            android:text="意见反馈" />
-    </RelativeLayout>
-
-    <RelativeLayout
         android:id="@+id/layout_zx"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="#00a16a">
 
         <TextView
             android:id="@+id/textView61"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="150dp"
-            android:layout_marginRight="150dp"
-            android:text="注销登录" />
+            android:layout_centerInParent="true"
+            android:text="注销登录"
+            android:textColor="#fff"
+            android:textSize="20sp" />
     </RelativeLayout>
+
+    <com.amap.api.maps2d.MapView
+        android:visibility="gone"
+        android:id="@+id/map"
+        android:layout_above="@id/btn_sign"
+        android:layout_below="@id/top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></com.amap.api.maps2d.MapView>
 </LinearLayout>
