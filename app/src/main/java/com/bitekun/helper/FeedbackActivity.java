@@ -3,6 +3,7 @@ package com.bitekun.helper;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +20,8 @@ import com.loopj.android.http.RequestParams;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import es.dmoral.toasty.Toasty;
 
 public class FeedbackActivity extends Activity {
 
@@ -55,6 +58,9 @@ public class FeedbackActivity extends Activity {
 				RequestParams rp = new RequestParams();
 				rp.put("title",et_title.getText().toString().trim());
 				rp.put("content",et_content.getText().toString().trim());
+				rp.put("idCardNo",MyApplication.workerId);
+				rp.put("name",MyApplication.currentUserName);
+
 				client.post(Urls.feedback,rp, new AsyncHttpResponseHandler() {
 					@Override
 					public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
@@ -63,8 +69,12 @@ public class FeedbackActivity extends Activity {
 							try {
 								if(Utils.byteArrayToStr(responseBody).equals("ok"))
 								{
-									Toast.makeText(FeedbackActivity.this,"提交成功",Toast.LENGTH_SHORT).show();
-									finish();
+									Toasty.success(FeedbackActivity.this, "提交成功!", Toast.LENGTH_SHORT, true).show();
+									new Handler().postDelayed(new Runnable(){
+										public void run() {
+											finish();
+										}
+									}, 2000);
 								}
 
 
@@ -72,7 +82,7 @@ public class FeedbackActivity extends Activity {
 
 							}catch (Exception e)
 							{
-								Toast.makeText(FeedbackActivity.this,"Json解析失败",Toast.LENGTH_SHORT).show();
+								Toasty.error(FeedbackActivity.this, "提交失败1!"+e.getMessage(), Toast.LENGTH_SHORT, true).show();
 							}
 
 						}
@@ -80,7 +90,7 @@ public class FeedbackActivity extends Activity {
 
 					@Override
 					public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
-						Toast.makeText(FeedbackActivity.this,"请求失败",Toast.LENGTH_SHORT).show();
+						Toasty.error(FeedbackActivity.this, "提交失败2!"+ error.getMessage(), Toast.LENGTH_SHORT, true).show();
 					}
 				});
 			}

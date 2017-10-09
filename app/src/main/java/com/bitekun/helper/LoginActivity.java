@@ -73,6 +73,7 @@ if(Utils.byteArrayToStr(responseBody)!=null)
 			JSONObject obj = arr.getJSONObject(0);
 			if(obj.has("name")) {
 				MyApplication.currentUserName = obj.getString("name");
+
 			}
 			else {
 				JSONObject account = obj.getJSONObject("account");

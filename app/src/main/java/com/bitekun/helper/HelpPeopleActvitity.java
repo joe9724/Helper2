@@ -20,6 +20,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -139,14 +140,16 @@ public class HelpPeopleActvitity extends AppCompatActivity {
 		mRv.setAdapter(adapter);
         searchstr="ppppp";
 		initData(0);
+		Log.v("get","4");
 
 		//下拉刷新的监听
 		mRefresh.setOnRefreshListener(new OnRefreshListener() {
 			@Override
 			public void onRefresh(RefreshLayout refreshlayout) {
 				pageNo = 0;
-				lists.clear();
+				lists = new ArrayList<HelpPeopleListItem>();
 				initData(0);
+				Log.v("get","5");
 				mRefresh.finishRefresh(2000);
 			}
 		});
@@ -159,6 +162,7 @@ public class HelpPeopleActvitity extends AppCompatActivity {
 				pageNo++;
 				initData(pageNo*20);
 				//adapter.notifyDataSetChanged();
+				Log.v("get","6");
 				mRefresh.finishLoadmore(2000);
 			}
 
@@ -175,7 +179,7 @@ public class HelpPeopleActvitity extends AppCompatActivity {
             public void onClick(View view) {
                 searchstr="ppppp";
                 tv_cancel.setVisibility(View.INVISIBLE);
-                lists.clear();
+				lists = new ArrayList<HelpPeopleListItem>();
                 initData(0);
             }
         });
@@ -190,7 +194,7 @@ public class HelpPeopleActvitity extends AppCompatActivity {
 
 			public boolean onKey(View v, int keyCode, KeyEvent event) {
 
-				if (keyCode == KeyEvent.KEYCODE_ENTER) {
+				if (keyCode == KeyEvent.KEYCODE_ENTER&&event.getAction()==KeyEvent.ACTION_UP) {
 					// 先隐藏键盘
 					((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
 							.hideSoftInputFromWindow(HelpPeopleActvitity.this.getCurrentFocus()
@@ -201,8 +205,10 @@ public class HelpPeopleActvitity extends AppCompatActivity {
 					{
 					    tv_cancel.setVisibility(View.VISIBLE);
 						searchstr = et_search.getText().toString().trim();
-						lists.clear();
+						lists = new ArrayList<HelpPeopleListItem>();
+						Log.v("get","1");
 						initData(0);
+						Log.v("get","2");
 					}
 				}
 				return false;
@@ -215,6 +221,7 @@ public class HelpPeopleActvitity extends AppCompatActivity {
 		AsyncHttpClient client = new AsyncHttpClient();
 		//lists.clear();
         String query = Urls.people+"pageIndex="+pageIndex+"&keyword="+searchstr;
+        Log.v("get",query);
 		client.get(query, new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {

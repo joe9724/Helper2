@@ -447,8 +447,8 @@ public class HealthPicker extends Activity implements View.OnClickListener {
                     public void callback(boolean isSuccess, String outfile) {
                         if (isSuccess) {
                             Glide.with(HealthPicker.this).load(outfile).placeholder(R.drawable.ic_launcher).error(R.drawable.takephoto).centerCrop().crossFade().into(iv_livephoto);
-                            //livepath.clear();
-                            //livepath.add(outfile);
+                            livepath.clear();
+                            livepath.add(outfile);
                         }
                     }
                 });
@@ -469,8 +469,8 @@ public class HealthPicker extends Activity implements View.OnClickListener {
                     public void callback(boolean isSuccess, String outfile) {
                         if (isSuccess) {
                             Glide.with(HealthPicker.this).load(outfile).placeholder(R.drawable.ic_launcher).error(R.drawable.takephoto).centerCrop().crossFade().into(iv_recordphoto);
-                            //recordpath.clear();
-                            //recordpath.add(outfile);
+                            recordpath.clear();
+                            recordpath.add(outfile);
                         }
                     }
                 });
