@@ -259,12 +259,14 @@ public class HelpPeopleActvitity extends AppCompatActivity {
 								item.setSzc(obj.getString("szc"));
 								item.setKfxm(obj.getString("kfxm"));
 								item.setKfjg(obj.getString("kfjg"));
+								item.setPickerId(obj.getString("pickerId"));
+
 
 								//
 								SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 								try {
 									Date date = format.parse(obj.getString("birth"));
-									item.setAge(String.valueOf(getAge(date)));
+									item.setAge(String.valueOf(Utils.getAge(date)));
 									//System.out.println(date);
 								} catch (ParseException e) {
 									//e.printStackTrace();
@@ -404,39 +406,6 @@ public class HelpPeopleActvitity extends AppCompatActivity {
 		}.execute("");
 	}
 
-	public static int getAge(Date birthDay) throws Exception
-	{
-		Calendar cal = Calendar.getInstance();
 
-		if (cal.before(birthDay))
-		{
-			throw new IllegalArgumentException(
-					"The birthDay is before Now.It's unbelievable!");
-		}
-		int yearNow = cal.get(Calendar.YEAR);
-		int monthNow = cal.get(Calendar.MONTH);
-		int dayOfMonthNow = cal.get(Calendar.DAY_OF_MONTH);
-		cal.setTime(birthDay);
-
-		int yearBirth = cal.get(Calendar.YEAR);
-		int monthBirth = cal.get(Calendar.MONTH);
-		int dayOfMonthBirth = cal.get(Calendar.DAY_OF_MONTH);
-
-		int age = yearNow - yearBirth;
-
-		if (monthNow <= monthBirth)
-		{
-			if (monthNow == monthBirth)
-			{
-				if (dayOfMonthNow < dayOfMonthBirth)
-					age--;
-			}
-			else
-			{
-				age--;
-			}
-		}
-		return age;
-	}
 
 }

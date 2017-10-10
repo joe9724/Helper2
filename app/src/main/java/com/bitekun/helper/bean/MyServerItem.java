@@ -12,6 +12,16 @@ public class MyServerItem implements Serializable {
     String Name;
     String Gender;
 
+    public String getPickerId() {
+        return pickerId;
+    }
+
+    public void setPickerId(String pickerId) {
+        this.pickerId = pickerId;
+    }
+
+    String pickerId;
+
     public String getDisableModeId() {
         return DisableModeId;
     }

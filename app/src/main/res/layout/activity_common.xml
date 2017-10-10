@@ -1,0 +1,109 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+     >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#00673B">
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:text="定位位置"
+            android:textColor="#fff" />
+      <!--  <scut.carson_ho.searchview.SearchView
+            android:layout_toRightOf="@id/textView14"
+            android:id="@+id/search_view"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:textSizeSearch="5dp"
+            app:textColorSearch="#3F51B5"
+            app:textHintSearch="输入查询关键字"
+            android:background="#00673B"
+
+            />-->
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layout_grxx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#D43B3B">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="个人信息"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/layout_kfjl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#EA7D38">
+
+        <TextView
+            android:id="@+id/textView611"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="康复记录"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/layout_yjfk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#299ad6">
+
+        <TextView
+            android:id="@+id/textView36"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="意见反馈"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/layout_zx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00ae6a">
+
+        <TextView
+            android:id="@+id/textView61"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="注销登录"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <com.amap.api.maps2d.MapView
+        android:visibility="gone"
+        android:id="@+id/map"
+        android:layout_above="@id/btn_sign"
+        android:layout_below="@id/top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></com.amap.api.maps2d.MapView>
+</LinearLayout>

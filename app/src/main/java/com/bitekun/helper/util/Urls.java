@@ -31,6 +31,8 @@ public class Urls {
 
     public final static String delete = prefix+"delete?id=";
 
+    public final static String signal = prefix+"signal";
+
 
 
 }

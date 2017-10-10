@@ -155,6 +155,7 @@ public class HealthPicker extends Activity implements View.OnClickListener {
         recordpath = new ArrayList<String>();
 
         et_record = (EditText)findViewById(R.id.et_record);
+        Utils.setProhibitEmoji(et_record);
         //et_record.setFocusable(false);
 
 
@@ -236,9 +237,9 @@ public class HealthPicker extends Activity implements View.OnClickListener {
             case R.id.btn_upload:
                 //test is server reached
                 AsyncHttpClient client = new AsyncHttpClient();
-                client.setTimeout(4000);
+                client.setTimeout(8000);
                 //lists.clear();
-                client.get("http://106.14.2.153/signal", new AsyncHttpResponseHandler() {
+                client.get(Urls.signal, new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
                         if(Utils.byteArrayToStr(responseBody)!=null)
@@ -600,6 +601,6 @@ public class HealthPicker extends Activity implements View.OnClickListener {
 
     }
 
-    //
+
 
 }

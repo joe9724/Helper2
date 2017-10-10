@@ -24,6 +24,7 @@ public class MyApplication extends Application {
 	public static String workerId;
 	public static String currentArea;
 	public static String idCardNo;
+	public static boolean isadmin;
 
 
 

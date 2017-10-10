@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.bitekun.helper.R;
+import com.bitekun.helper.bean.HelpPeopleListItem;
 import com.bitekun.helper.util.DensityUtil;
 import com.bitekun.helper.util.Urls;
 import com.bitekun.helper.util.Utils;
@@ -20,6 +21,11 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class LoginActivity extends Activity {
 
@@ -68,14 +74,59 @@ if(Utils.byteArrayToStr(responseBody)!=null)
 	}
 	try {
 		JSONArray arr = new JSONArray(Utils.byteArrayToStr(responseBody));
+		Intent i;
 		if(arr!=null&&arr.length()>0)
 		{
 			JSONObject obj = arr.getJSONObject(0);
 			if(obj.has("name")) {
+				//病人或家属登录
 				MyApplication.currentUserName = obj.getString("name");
+				MyApplication.isadmin = false;
+
+				HelpPeopleListItem item = new HelpPeopleListItem();
+				item.setId(obj.getString("id"));
+				item.setIdCard(obj.getString("idCard"));
+				item.setCardNo(obj.getString("cardNo"));
+				item.setCardStateId(obj.getString("cardstateid"));
+				item.setDisableType(obj.getString("disableType"));
+				item.setDisableModeId(obj.getString("disableModeId"));
+				item.setDisableLevel(obj.getString("disableLevel"));
+				item.setIsChild(obj.getString("isChild"));
+				item.setName(obj.getString("name"));
+				item.setGender(obj.getString("gender"));
+				item.setBirth(obj.getString("birth"));
+				item.setNation(obj.getString("nation"));
+				item.setPhone(obj.getString("phone"));
+				item.setAddress(obj.getString("address"));
+				item.setGuardian(obj.getString("guardian"));
+				item.setGuardPhone(obj.getString("guardPhone"));
+				item.setRelation(obj.getString("relation"));
+				item.setCoordinator(obj.getString("coordinator"));
+				item.setPickTime(obj.getString("pickTime"));
+				item.setAvatar(obj.getString("avatar"));
+				item.setSzxq(obj.getString("szxq"));
+				item.setSzxz(obj.getString("szxz"));
+				item.setSzc(obj.getString("szc"));
+				item.setKfxm(obj.getString("kfxm"));
+				item.setKfjg(obj.getString("kfjg"));
+
+				//
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+				try {
+					Date date = format.parse(obj.getString("birth"));
+					item.setAge(String.valueOf(Utils.getAge(date)));
+					//System.out.println(date);
+				} catch (ParseException e) {
+					//e.printStackTrace();
+				}
+				i = new Intent(LoginActivity.this,CommonMainActivity.class);
+				i.putExtra("item", (Serializable)item);
+
 
 			}
 			else {
+				//管理员登录
+				MyApplication.isadmin = true;
 				JSONObject account = obj.getJSONObject("account");
 				MyApplication.currentUserName = account.getString("String");
 				JSONObject uid = obj.getJSONObject("u_id");
@@ -83,13 +134,13 @@ if(Utils.byteArrayToStr(responseBody)!=null)
 				//
                 JSONObject rolename = obj.getJSONObject("password");
                 MyApplication.rolename = rolename.getString("String");
-
+				i = new Intent(LoginActivity.this,MainActivity.class);
 			}
 
 			//跳转
+			startActivity(i);
+			finish();
 
-			startActivity(new Intent(LoginActivity.this,MainActivity.class));
-            finish();
 
 		}
 

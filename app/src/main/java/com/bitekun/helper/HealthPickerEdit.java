@@ -184,7 +184,26 @@ public class HealthPickerEdit extends Activity implements View.OnClickListener {
 
 		et_record = (EditText)findViewById(R.id.et_record);
 		et_record.setText(hp.getAccessRecord());
+		Utils.setProhibitEmoji(et_record);
         //et_record.setFocusable(false);
+
+        if(MyApplication.isadmin)
+        {
+            btn_delete.setVisibility(View.VISIBLE);
+            btn_upload.setVisibility(View.VISIBLE);
+        }else{
+            //
+            if(MyApplication.workerId.equals(hp.getPickerId()))
+            {
+                btn_delete.setVisibility(View.VISIBLE);
+                btn_upload.setVisibility(View.VISIBLE);
+            }else
+            {
+                btn_delete.setVisibility(View.INVISIBLE);
+                btn_upload.setVisibility(View.INVISIBLE);
+            }
+
+        }
 
 
 
@@ -359,6 +378,7 @@ public class HealthPickerEdit extends Activity implements View.OnClickListener {
 				txt.put("serviceId",kfxm);
 				txt.put("agencyId",kfjg);
 				txt.put("accessRecord",et_record.getText().toString().trim());
+				txt.put("pickerName",MyApplication.currentUserName);
 				//txt.put("latitude",String.valueOf(MainActivity.lat));
 				//txt.put("longitude",String.valueOf(MainActivity.lon));
 				//txt.put("location",MainActivity.location);

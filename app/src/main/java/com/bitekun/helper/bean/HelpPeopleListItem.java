@@ -13,6 +13,16 @@ public class HelpPeopleListItem implements Serializable {
 	private String  IsChild;
 	private String  Name;
 
+	public String getPickerId() {
+		return PickerId;
+	}
+
+	public void setPickerId(String pickerId) {
+		PickerId = pickerId;
+	}
+
+	private String  PickerId;
+
 	public String getKfxm() {
 		return Kfxm;
 	}
