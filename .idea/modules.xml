@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/DisabledHelper.iml" filepath="$PROJECT_DIR$/.idea/DisabledHelper.iml" />
+      <module fileurl="file://D:\Helper2\.idea\DisabledHelper.iml" filepath="D:\Helper2\.idea\DisabledHelper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Helper2.iml" filepath="$PROJECT_DIR$/Helper2.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/multi-image-selector/multi-image-selector.iml" filepath="$PROJECT_DIR$/multi-image-selector/multi-image-selector.iml" />
     </modules>

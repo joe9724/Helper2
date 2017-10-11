@@ -178,6 +178,7 @@ public class MyHelpPeopleActvitity extends Activity {
 								item.setName(obj.getString("name"));
 								item.setAvatar(obj.getString("avatar"));
 								item.setDisableModeId(obj.getString("disableModeId"));
+								item.setIsChild(obj.getInt("isChild"));
                                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                                 try {
                                     Date date = format.parse(obj.getString("birth"));

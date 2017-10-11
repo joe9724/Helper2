@@ -259,7 +259,7 @@ public class HelpPeopleActvitity extends AppCompatActivity {
 								item.setSzc(obj.getString("szc"));
 								item.setKfxm(obj.getString("kfxm"));
 								item.setKfjg(obj.getString("kfjg"));
-								item.setPickerId(obj.getString("pickerId"));
+								//item.setPickerId(obj.getString("pickerId"));
 
 
 								//
@@ -364,48 +364,5 @@ public class HelpPeopleActvitity extends AppCompatActivity {
 			}
 		}
 	}
-
-   ArrayList<HelpPeopleListItem> datalist;
-
-	private void initData1(final String refreshMode) {
-		new AsyncTask<String, Integer, String>() {
-			int tempNo = pageNo;
-
-			@Override
-			protected String doInBackground(String... params) {
-				if (CommonConst.REFRESH_MODE_1.equals(refreshMode)) {
-					tempNo = 1;
-					// MyApplication.FAT_DATAMAP.clear();
-					datalist = JsonUtil.getInstance().getHelpPeople("",
-							tempNo + "", MyApplication.FAT_DATAMAP);
-
-				} else if (CommonConst.REFRESH_MODE_2.equals(refreshMode)) {
-					tempNo++;
-					if (null == datalist) {
-						datalist = new ArrayList<HelpPeopleListItem>();
-					}
-					datalist.addAll(JsonUtil.getInstance().getHelpPeople("",
-							tempNo + "", MyApplication.FAT_DATAMAP));
-				}
-
-				return null;
-			}
-
-			@Override
-			protected void onPostExecute(String result) {
-				super.onPostExecute(result);
-
-				// news_fat_listview.setVisibility(View.GONE);
-				// newsListviewAdapter.notifyDataSetChanged();
-				// news_fat_listview.setVisibility(View.VISIBLE);
-				//handler.obtainMessage(1).sendToTarget();
-
-				// progress.setVisibility(View.GONE);
-				pageNo = tempNo;
-			}
-		}.execute("");
-	}
-
-
 
 }

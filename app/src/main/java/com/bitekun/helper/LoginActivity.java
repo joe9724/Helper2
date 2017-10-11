@@ -73,20 +73,20 @@ if(Utils.byteArrayToStr(responseBody)!=null)
 		return;
 	}
 	try {
-		JSONArray arr = new JSONArray(Utils.byteArrayToStr(responseBody));
+		//JSONArray arr = new JSONArray();
 		Intent i;
-		if(arr!=null&&arr.length()>0)
-		{
-			JSONObject obj = arr.getJSONObject(0);
-			if(obj.has("name")) {
+		//if(arr!=null&&arr.length()>0)
+		//{
+			JSONObject obj = new JSONObject(Utils.byteArrayToStr(responseBody));
+			if(obj.has("address")) {
 				//病人或家属登录
 				MyApplication.currentUserName = obj.getString("name");
 				MyApplication.isadmin = false;
-
 				HelpPeopleListItem item = new HelpPeopleListItem();
 				item.setId(obj.getString("id"));
 				item.setIdCard(obj.getString("idCard"));
 				item.setCardNo(obj.getString("cardNo"));
+                MyApplication.workerId = obj.getString("idCard");
 				item.setCardStateId(obj.getString("cardstateid"));
 				item.setDisableType(obj.getString("disableType"));
 				item.setDisableModeId(obj.getString("disableModeId"));
@@ -121,28 +121,31 @@ if(Utils.byteArrayToStr(responseBody)!=null)
 				}
 				i = new Intent(LoginActivity.this,CommonMainActivity.class);
 				i.putExtra("item", (Serializable)item);
-
+				startActivity(i);
+				finish();
 
 			}
-			else {
+			else if(obj.has("account") ){
 				//管理员登录
 				MyApplication.isadmin = true;
-				JSONObject account = obj.getJSONObject("account");
-				MyApplication.currentUserName = account.getString("String");
-				JSONObject uid = obj.getJSONObject("u_id");
-				MyApplication.workerId = uid.getString("String");
+
+				MyApplication.currentUserName = obj.getString("account");
+
+				MyApplication.workerId = obj.getString("u_id");
 				//
-                JSONObject rolename = obj.getJSONObject("password");
-                MyApplication.rolename = rolename.getString("String");
+
+                MyApplication.rolename = obj.getString("password");
 				i = new Intent(LoginActivity.this,MainActivity.class);
+				startActivity(i);
+				finish();
 			}
+			else
+            {
+                errortimes++;
+                Toast.makeText(LoginActivity.this,"账号或密码错误,累计错误"+errortimes+"次",Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-			//跳转
-			startActivity(i);
-			finish();
-
-
-		}
 
 
 	}catch (Exception e)

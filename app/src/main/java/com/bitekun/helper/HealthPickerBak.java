@@ -279,9 +279,9 @@ public class HealthPickerBak extends Activity implements View.OnClickListener {
                                 txt.put("serviceId",kfxm);
                                 txt.put("agencyId",kfjg);
                                 txt.put("accessRecord",et_record.getText().toString().trim());
-                                txt.put("latitude",String.valueOf(MainActivity.lat));
-                                txt.put("longitude",String.valueOf(MainActivity.lon));
-                                txt.put("location",MainActivity.location);
+                                txt.put("latitude",String.valueOf(MyApplication.lat));
+                                txt.put("longitude",String.valueOf(MyApplication.lon));
+                                txt.put("location",MyApplication.location);
                                 txt.put("livePhoto",livepath.get(0));
                                 txt.put("recordPhoto",recordpath.get(0));
                                 txt.put("name",hp.getName());

@@ -12,6 +12,26 @@ public class MyServerItem implements Serializable {
     String Name;
     String Gender;
 
+    public int getIsChild() {
+        return isChild;
+    }
+
+    public void setIsChild(int isChild) {
+        this.isChild = isChild;
+    }
+
+    int isChild;
+
+    public String getPickerName() {
+        return PickerName;
+    }
+
+    public void setPickerName(String pickerName) {
+        PickerName = pickerName;
+    }
+
+    String PickerName;
+
     public String getPickerId() {
         return pickerId;
     }

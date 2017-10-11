@@ -62,8 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 	private boolean isFirstLoc = true;
 
 	TextView tv_loc;
-	public static double lat,lon;
-	public static String location;
+
 
 
 
@@ -272,8 +271,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 				amapLocation.getLocationType();//获取当前定位结果来源，如网络定位结果，详见官方定位类型表
 				amapLocation.getLatitude();//获取纬度
 				amapLocation.getLongitude();//获取经度
-				lat = amapLocation.getLatitude();
-				lon = amapLocation.getLongitude();
+				MyApplication.lat = amapLocation.getLatitude();
+				MyApplication.lon = amapLocation.getLongitude();
 
 				amapLocation.getAccuracy();//获取精度信息
 				SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -289,7 +288,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 				amapLocation.getCityCode();//城市编码
 				amapLocation.getAdCode();//地区编码
 
-				location = amapLocation.getCity()+amapLocation.getDistrict()+amapLocation.getStreet();
+				MyApplication.location = amapLocation.getCity()+amapLocation.getDistrict()+amapLocation.getStreet();
 
 				tv_loc.setText(amapLocation.getCity()+amapLocation.getDistrict()+amapLocation.getStreet()+"   "+MyApplication.currentUserName+"   "+MyApplication.rolename);
 

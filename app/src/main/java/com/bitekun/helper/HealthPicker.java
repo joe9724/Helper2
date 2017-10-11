@@ -280,9 +280,9 @@ public class HealthPicker extends Activity implements View.OnClickListener {
                                 txt.put("serviceId",kfxm);
                                 txt.put("agencyId",kfjg);
                                 txt.put("accessRecord",et_record.getText().toString().trim());
-                                txt.put("latitude",String.valueOf(MainActivity.lat));
-                                txt.put("longitude",String.valueOf(MainActivity.lon));
-                                txt.put("location",MainActivity.location);
+                                txt.put("latitude",String.valueOf(MyApplication.lat));
+                                txt.put("longitude",String.valueOf(MyApplication.lon));
+                                txt.put("location",MyApplication.location);
                                 txt.put("livePhoto",livepath.get(0));
                                 txt.put("recordPhoto",recordpath.get(0));
                                 txt.put("name",hp.getName());
@@ -292,6 +292,8 @@ public class HealthPicker extends Activity implements View.OnClickListener {
                                 txt.put("birth",hp.getBirth());
                                 txt.put("pickerId",MyApplication.workerId);
                                 txt.put("disableModeId",hp.getDisableModeId());
+                                txt.put("isChild",hp.getIsChild());
+                                txt.put("pickerName",MyApplication.currentUserName);
 
                                 temp = new ArrayList<String>();
                                 if(livepath.size()>0)
@@ -318,6 +320,7 @@ public class HealthPicker extends Activity implements View.OnClickListener {
                                     protected void onPostExecute(String result) {
                                         super.onPostExecute(result);
                                         progressbar.setVisibility(View.GONE);
+
                                         if(resultstr==null)
                                         {
                                             Toasty.error(HealthPicker.this, "服务器返回null!", Toast.LENGTH_SHORT, true).show();

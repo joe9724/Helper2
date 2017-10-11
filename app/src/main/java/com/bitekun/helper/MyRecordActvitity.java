@@ -147,7 +147,7 @@ public class MyRecordActvitity extends Activity {
 
 	private void initData(int pageIndex) {
 		AsyncHttpClient client = new AsyncHttpClient();
-		client.get(Urls.mypeople+MyApplication.workerId+"&pageIndex="+pageIndex, new AsyncHttpResponseHandler() {
+		client.get(Urls.record+MyApplication.workerId+"&pageIndex="+pageIndex, new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
 				if(Utils.byteArrayToStr(responseBody)!=null)
@@ -177,6 +177,8 @@ public class MyRecordActvitity extends Activity {
 								item.setName(obj.getString("name"));
 								item.setAvatar(obj.getString("avatar"));
 								item.setDisableModeId(obj.getString("disableModeId"));
+								item.setPickerName(obj.getString("pickerName"));
+								item.setPickerId(obj.getString("pickerId"));
                                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                                 try {
                                     Date date = format.parse(obj.getString("birth"));
@@ -219,7 +221,7 @@ public class MyRecordActvitity extends Activity {
 		myViewholder myViewholder;
 		@Override
 		public LayoutAdapter.myViewholder onCreateViewHolder(ViewGroup parent, int viewType) {
-			myViewholder = new myViewholder(LayoutInflater.from(MyRecordActvitity.this).inflate(R.layout.item_layout_myhelper, parent, false));
+			myViewholder = new myViewholder(LayoutInflater.from(MyRecordActvitity.this).inflate(R.layout.item_layout_myrecord, parent, false));
 			return myViewholder;
 		}
 
@@ -229,7 +231,7 @@ public class MyRecordActvitity extends Activity {
 			holder.tv_sex.setText(lists.get(position).getGender().equals("1")?"男":"女");
 			holder.tv_age.setText(lists.get(position).getAge()+"岁");
 			holder.tv_level.setText(lists.get(position).getLevel());
-			holder.tv_tel.setText(lists.get(position).getPhone());
+			holder.tv_tel.setText(lists.get(position).getPickerName());
 			holder.tv_no.setText(lists.get(position).getDiscardNo());
 			holder.tv_lastdate.setText(lists.get(position).getAccessTime());
 			holder.tv_disableModelId.setText(lists.get(position).getDisableModeId());

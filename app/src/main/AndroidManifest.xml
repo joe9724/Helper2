@@ -78,6 +78,13 @@
             android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
+            android:name="com.bitekun.helper.MeDetail"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        <activity
             android:name="com.bitekun.helper.MyHelpPeopleActvitity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"

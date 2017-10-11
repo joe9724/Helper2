@@ -33,6 +33,10 @@ public class Urls {
 
     public final static String signal = prefix+"signal";
 
+    public final static String record = prefix+"record?idcardNo=";
+
+    public final static String peopleDetail = prefix+"peopleDetail?idCardNo=";
+
 
 
 }

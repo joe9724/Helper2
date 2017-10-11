@@ -53,8 +53,7 @@ public class CommonMainActivity extends AppCompatActivity implements View.OnClic
 	private boolean isFirstLoc = true;
 
 	TextView tv_loc;
-	public static double lat,lon;
-	public static String location;
+
 
     HelpPeopleListItem hp;
 
@@ -69,7 +68,7 @@ public class CommonMainActivity extends AppCompatActivity implements View.OnClic
         hp = (HelpPeopleListItem) getIntent().getSerializableExtra("item");
 
 
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_common);
 		layout_grxx = (RelativeLayout)findViewById(R.id.layout_grxx);
 		layout_kfjl = (RelativeLayout)findViewById(R.id.layout_kfjl);
 		layout_yjfk = (RelativeLayout)findViewById(R.id.layout_yjfk);
@@ -95,7 +94,7 @@ public class CommonMainActivity extends AppCompatActivity implements View.OnClic
 		half_lp.setMargins(densityvalue,densityvalue,0,0);
 		lp.setMargins(densityvalue,densityvalue,0,0);
 
-		layout_grxx.setLayoutParams(half_lp);
+		layout_grxx.setLayoutParams(lp);
 		layout_kfjl.setLayoutParams(lp);
 		layout_yjfk.setLayoutParams(lp);
 		layout_zx.setLayoutParams(lp);
@@ -141,7 +140,7 @@ public class CommonMainActivity extends AppCompatActivity implements View.OnClic
 		{
 		    //个人信息
 			case R.id.layout_grxx:
-                i = new Intent(this,HelpPeopleDetail.class);
+                i = new Intent(this,MeDetail.class);
                 i.putExtra("item", (Serializable)hp);
 				startActivity(i);
 				break;
@@ -262,8 +261,8 @@ public class CommonMainActivity extends AppCompatActivity implements View.OnClic
 				amapLocation.getLocationType();//获取当前定位结果来源，如网络定位结果，详见官方定位类型表
 				amapLocation.getLatitude();//获取纬度
 				amapLocation.getLongitude();//获取经度
-				lat = amapLocation.getLatitude();
-				lon = amapLocation.getLongitude();
+                MyApplication.lat = amapLocation.getLatitude();
+                MyApplication.lon = amapLocation.getLongitude();
 
 				amapLocation.getAccuracy();//获取精度信息
 				SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -279,9 +278,9 @@ public class CommonMainActivity extends AppCompatActivity implements View.OnClic
 				amapLocation.getCityCode();//城市编码
 				amapLocation.getAdCode();//地区编码
 
-				location = amapLocation.getCity()+amapLocation.getDistrict()+amapLocation.getStreet();
+				MyApplication.location = amapLocation.getCity()+amapLocation.getDistrict()+amapLocation.getStreet();
 
-				tv_loc.setText(amapLocation.getCity()+amapLocation.getDistrict()+amapLocation.getStreet()+"   "+MyApplication.currentUserName+"   "+MyApplication.rolename);
+				tv_loc.setText(amapLocation.getCity()+amapLocation.getDistrict()+amapLocation.getStreet()+"   "+MyApplication.currentUserName);
 
 				// 如果不设置标志位，此时再拖动地图时，它会不断将地图移动到当前的位置
 				if (isFirstLoc) {

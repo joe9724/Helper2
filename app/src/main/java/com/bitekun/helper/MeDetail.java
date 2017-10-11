@@ -2,47 +2,31 @@ package com.bitekun.helper;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bitekun.helper.bean.HelpPeopleListItem;
-import com.bitekun.helper.util.CommonConst;
-import com.bitekun.helper.util.JsonUtil;
 import com.bitekun.helper.util.Urls;
 import com.bitekun.helper.util.Utils;
 import com.bumptech.glide.Glide;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import es.dmoral.toasty.Toasty;
 
 
-public class HelpPeopleDetail extends Activity {
+public class MeDetail extends Activity {
 
     HelpPeopleListItem hp;
     TextView tv_name,tv_sex,tv_age,tv_birth,tv_tel,tv_id,tv_no,tv_addr,tv_type,tv_class,tv_level,tv_guardname,tv_guardphone,tv_relation;
@@ -69,8 +53,9 @@ public class HelpPeopleDetail extends Activity {
 		//
         hp = (HelpPeopleListItem) getIntent().getSerializableExtra("item");
 
-
+        
         btn_picker = (Button)findViewById(R.id.btn_picker);
+        btn_picker.setVisibility(View.VISIBLE);
         btn_picker.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -83,7 +68,7 @@ public class HelpPeopleDetail extends Activity {
                     @Override
                     public void onStart() {
                         super.onStart();
-                        Toasty.success(HelpPeopleDetail.this, "请求数据中，请稍候", Toast.LENGTH_SHORT, true).show();
+                        Toasty.success(MeDetail.this, "请求数据中，请稍候", Toast.LENGTH_SHORT, true).show();
                     }
 
                     @Override
@@ -130,13 +115,13 @@ public class HelpPeopleDetail extends Activity {
                                 }
 
                                 //
-                                Intent intent = new Intent(HelpPeopleDetail.this,HelpPeopleDetail.class);
+                                Intent intent = new Intent(MeDetail.this,HealthPicker.class);
                                 intent.putExtra("item", (Serializable)item);
-                                HelpPeopleDetail.this.startActivity(intent);
+                                MeDetail.this.startActivity(intent);
 
 
                             } catch (Exception e) {
-
+                                Toasty.error(MeDetail.this, "err"+e.getMessage(), Toast.LENGTH_SHORT, true).show();
                             }
 
 
@@ -146,6 +131,7 @@ public class HelpPeopleDetail extends Activity {
 
                     @Override
                     public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
+                        Toasty.error(MeDetail.this, "failure"+error.getMessage(), Toast.LENGTH_SHORT, true).show();
 
                     }
                 });
@@ -190,7 +176,7 @@ public class HelpPeopleDetail extends Activity {
 
         iv_avatar = (ImageView)findViewById(R.id.iv_avatar);
 
-        Glide.with(HelpPeopleDetail.this).load(Urls.prefix+"img/"+hp.getAvatar()).placeholder(R.drawable.defaultavatar).error(R.drawable.defaultavatar).centerCrop().crossFade().into(iv_avatar);
+        Glide.with(MeDetail.this).load(Urls.prefix+"img/"+hp.getAvatar()).placeholder(R.drawable.defaultavatar).error(R.drawable.defaultavatar).centerCrop().crossFade().into(iv_avatar);
 
 
 

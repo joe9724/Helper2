@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="80dp">
+
+<LinearLayout
+    android:visibility="gone"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="85dp">
+
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_margin="15dp"
+android:layout_gravity="center"
+        android:src="@drawable/defaultavatar" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:orientation="horizontal">
+            <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textSize="20sp"
+                android:textColor="#000"
+            android:text="姓名" />
+            <TextView
+                android:id="@+id/tv_sex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"  android:textColor="#000"
+                android:textSize="15sp"
+                android:text="男" />
+            <TextView
+                android:id="@+id/tv_age"
+                android:layout_width="match_parent" android:layout_marginLeft="10dp"  android:textColor="#000"
+                android:textSize="15sp"
+                android:layout_height="wrap_content" android:layout_gravity="center_vertical"
+                android:text="35岁" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/textView81"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_gravity="center_vertical"  android:textColor="#000"
+                android:textSize="15sp"
+                android:text="残疾类型:" />
+            <TextView
+                android:id="@+id/tv_disableModelId"
+                android:layout_width="match_parent" android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content" android:layout_gravity="center_vertical"  android:textColor="#000"
+                android:textSize="15sp"
+                android:text="" />
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_gravity="center_vertical"  android:textColor="#000"
+            android:textSize="15sp"
+            android:text="残疾等级:" />
+            <TextView
+                android:id="@+id/tv_level"
+                android:layout_width="match_parent" android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content" android:layout_gravity="center_vertical"  android:textColor="#000"
+                android:textSize="15sp"
+                android:text="视力一级" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textView91"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_gravity="center_vertical"  android:textColor="#000"
+            android:textSize="15sp"
+            android:text="残疾证号:" />
+        <TextView
+            android:id="@+id/tv_no"
+            android:layout_width="match_parent" android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content" android:layout_gravity="center_vertical"  android:textColor="#000"
+            android:textSize="15sp"
+            android:text="320xxxx" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"  android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView92"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="采集人:"
+            android:textColor="#000"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_tel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:textColor="#000"
+            android:textSize="15sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"  android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView93"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="采集时间:"
+            android:textColor="#000"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/tv_lastdate"
+            android:layout_width="match_parent" android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content" android:layout_gravity="center_vertical"  android:textColor="#000"
+            android:textSize="15sp"
+            android:text="xxxx xx xx" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ccc"
+        android:orientation="horizontal">
+    </LinearLayout>
+</LinearLayout>

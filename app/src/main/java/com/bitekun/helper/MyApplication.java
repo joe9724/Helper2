@@ -25,7 +25,8 @@ public class MyApplication extends Application {
 	public static String currentArea;
 	public static String idCardNo;
 	public static boolean isadmin;
-
+	public static double lat,lon;
+	public static String location;
 
 
 	@SuppressWarnings("deprecation")

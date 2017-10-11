@@ -294,6 +294,11 @@ public class HealthPickerEdit extends Activity implements View.OnClickListener {
                     public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
                         if(Utils.byteArrayToStr(responseBody)!=null)
                         {
+                            if(Utils.byteArrayToStr(responseBody).equals("timeout"))
+                            {
+                                Toasty.error(HealthPickerEdit.this, "记录超过了可修改时间", Toast.LENGTH_SHORT, true).show();
+                                return;
+                            }
                             if (Utils.byteArrayToStr(responseBody).equals("ok"))
                             {
                                 Toasty.success(HealthPickerEdit.this, "删除成功!", Toast.LENGTH_SHORT, true).show();
@@ -415,7 +420,11 @@ public class HealthPickerEdit extends Activity implements View.OnClickListener {
 					@Override
 					protected void onPostExecute(String result) {
 						super.onPostExecute(result);
-						progressbar.setVisibility(View.GONE);
+						progressbar.setVisibility(View.GONE);  if(resultstr.equals("timeout"))
+                        {
+                            Toasty.error(HealthPickerEdit.this, "记录超过了可修改时间", Toast.LENGTH_SHORT, true).show();
+                            return;
+                        }
 						if(resultstr.equals("error"))
                         {
                             Toasty.error(HealthPickerEdit.this, "upsert err!", Toast.LENGTH_SHORT, true).show();
