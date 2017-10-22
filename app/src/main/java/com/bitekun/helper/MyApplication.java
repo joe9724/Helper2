@@ -27,6 +27,8 @@ public class MyApplication extends Application {
 	public static boolean isadmin;
 	public static double lat,lon;
 	public static String location;
+	public static String area;
+	public static String qx;
 
 
 	@SuppressWarnings("deprecation")

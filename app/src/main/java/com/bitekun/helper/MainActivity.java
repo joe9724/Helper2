@@ -47,7 +47,7 @@ import com.umeng.analytics.MobclickAgent;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, LocationSource,AMapLocationListener
 {
- RelativeLayout layout_xcqd,layout_kfcj,layout_kfdx,layout_wfwd,layout_yjfk,layout_zx;
+ RelativeLayout layout_xcqd,layout_kfcj,layout_kfdx,layout_wfwd,layout_yjfk,layout_zx,layout_editpass;
  Intent i;
 
 	//定位需要的声明
@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 				layout_wfwd = (RelativeLayout)findViewById(R.id.layout_wfwd);
 		layout_yjfk = (RelativeLayout)findViewById(R.id.layout_yjfk);
 				layout_zx = (RelativeLayout)findViewById(R.id.layout_zx);
+		layout_editpass = (RelativeLayout)findViewById(R.id.layout_editpass);
 
 		layout_xcqd.setOnClickListener(this);
 		layout_kfcj.setOnClickListener(this);
@@ -85,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 		layout_wfwd.setOnClickListener(this);
 		layout_yjfk.setOnClickListener(this);
 		layout_zx.setOnClickListener(this);
+		layout_editpass.setOnClickListener(this);
 		tv_loc = (TextView)findViewById(R.id.textView14);
 
 		//
@@ -102,7 +104,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 		layout_kfdx.setLayoutParams(lp);
 		layout_wfwd.setLayoutParams(half_lp);
 		layout_yjfk.setLayoutParams(half_lp);
-        layout_zx.setLayoutParams(lp);
+        layout_zx.setLayoutParams(half_lp);
+		layout_editpass.setLayoutParams(half_lp);
 
 
 
@@ -143,6 +146,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 	public void onClick(View view) {
 		switch (view.getId())
 		{
+			case R.id.layout_editpass:
+				i = new Intent(this,EditPass.class);
+				startActivity(i);
+				break;
 			case R.id.layout_xcqd:
                 i = new Intent(this,SignActivity.class);
 				startActivity(i);

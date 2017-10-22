@@ -52,9 +52,14 @@ public class SplashActivity extends Activity {
         new Handler().postDelayed(new Runnable(){
             public void run() {
                 AsyncHttpClient client = new AsyncHttpClient();
-                client.setTimeout(4000);
+
+                client.setMaxRetriesAndTimeout(0,2000);
+
                 //lists.clear();
                 client.get("http://106.14.2.153/explore", new AsyncHttpResponseHandler() {
+
+
+
                     @Override
                     public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
                         if(Utils.byteArrayToStr(responseBody)!=null)
@@ -79,7 +84,7 @@ public class SplashActivity extends Activity {
                     }
                 });
             }
-        }, 4000);
+        }, 2000);
 
 
 

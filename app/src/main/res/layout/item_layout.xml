@@ -3,7 +3,7 @@
     android:id="@+id/item"
     android:layout_width="match_parent"
     android:orientation="horizontal"
-    android:layout_height="133dp">
+    android:layout_height="166dp">
 
     <ImageView
         android:id="@+id/avatar"
@@ -16,7 +16,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="133dp"
+        android:layout_height="166dp"
 
         android:orientation="vertical">
 
@@ -92,6 +92,21 @@
                 android:layout_width="match_parent" android:layout_marginLeft="10dp"
                 android:layout_height="wrap_content" android:layout_gravity="center_vertical"
                 android:text="189xxxxxxxx" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/textView64"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_gravity="center_vertical"
+                android:text="所在区域:" />
+            <TextView
+                android:id="@+id/tv_location"
+                android:layout_width="match_parent" android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content" android:layout_gravity="center_vertical"
+                android:text="" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"

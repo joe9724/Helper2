@@ -133,22 +133,44 @@
                 android:textSize="20sp" />
         </RelativeLayout>
     </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/layout_zx"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#00a16a">
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textView61"
+        <RelativeLayout
+            android:id="@+id/layout_editpass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="注销登录"
-            android:textColor="#fff"
-            android:textSize="20sp" />
-    </RelativeLayout>
+            android:background="#00bb9d">
+
+            <TextView
+                android:id="@+id/textView421"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="修改密码"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_zx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00a16a">
+
+            <TextView
+                android:id="@+id/textView61"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="注销登录"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
 
     <com.amap.api.maps2d.MapView
         android:visibility="gone"

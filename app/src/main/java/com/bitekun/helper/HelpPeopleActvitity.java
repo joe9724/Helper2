@@ -62,6 +62,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import es.dmoral.toasty.Toasty;
+
 /*
 import scut.carson_ho.searchview.ICallBack;
 import scut.carson_ho.searchview.SearchView;
@@ -85,6 +87,7 @@ public class HelpPeopleActvitity extends AppCompatActivity {
 	private  String searchstr="ppppp";
 	EditText et_search;
 	TextView tv_cancel;
+	TextView tv_search;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -138,7 +141,7 @@ public class HelpPeopleActvitity extends AppCompatActivity {
 		mRv.setLayoutManager(new LinearLayoutManager(this));
 		adapter = new LayoutAdapter();
 		mRv.setAdapter(adapter);
-        searchstr="ppppp";
+        searchstr="";
 		initData(0);
 		Log.v("get","4");
 
@@ -172,12 +175,34 @@ public class HelpPeopleActvitity extends AppCompatActivity {
 			}
 		});
 
+		tv_search = (TextView)findViewById(R.id.tv_search);
+        tv_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
+                        .hideSoftInputFromWindow(HelpPeopleActvitity.this.getCurrentFocus()
+                                .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                //进行搜索操作的方法，在该方法中可以加入mEditSearchUser的非空判断
+                //search();
+                if(et_search.getText()!=null&&et_search.getText().toString().length()>0)
+                {
+                    tv_cancel.setVisibility(View.INVISIBLE);
+                    searchstr = et_search.getText().toString().trim();
+                    lists = new ArrayList<HelpPeopleListItem>();
+                    Log.v("get","1");
+                    initData(0);
+                    Log.v("get","2");
+                }else{
+                    Toasty.error(HelpPeopleActvitity.this, "请输入关键词!", Toast.LENGTH_SHORT, true).show();
+                }
+            }
+        });
 		//
         tv_cancel = (TextView)findViewById(R.id.tv_cancel);
         tv_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                searchstr="ppppp";
+                searchstr="";
                 tv_cancel.setVisibility(View.INVISIBLE);
 				lists = new ArrayList<HelpPeopleListItem>();
                 initData(0);
@@ -203,7 +228,7 @@ public class HelpPeopleActvitity extends AppCompatActivity {
 					//search();
 					if(et_search.getText()!=null&&et_search.getText().toString().length()>0)
 					{
-					    tv_cancel.setVisibility(View.VISIBLE);
+					    tv_cancel.setVisibility(View.INVISIBLE);
 						searchstr = et_search.getText().toString().trim();
 						lists = new ArrayList<HelpPeopleListItem>();
 						Log.v("get","1");
@@ -220,7 +245,12 @@ public class HelpPeopleActvitity extends AppCompatActivity {
 	private void initData(int pageIndex) {
 		AsyncHttpClient client = new AsyncHttpClient();
 		//lists.clear();
-        String query = Urls.people+"pageIndex="+pageIndex+"&keyword="+searchstr;
+        String query=null;
+        if(MyApplication.qx.equals("1")) {
+         query =Urls.people + "szxq=admin"+ "&pageIndex=" + pageIndex + "&keyword=" + searchstr;
+        }else{
+            query =Urls.people + "szxq="+MyApplication.area + "&pageIndex=" + pageIndex + "&keyword=" + searchstr;
+        }
         Log.v("get",query);
 		client.get(query, new AsyncHttpResponseHandler() {
 			@Override
@@ -316,6 +346,7 @@ public class HelpPeopleActvitity extends AppCompatActivity {
 			holder.tv_level.setText(lists.get(position).getDisableLevel());
 			holder.tv_tel.setText(lists.get(position).getPhone());
 			holder.tv_disableModel.setText("残疾类型:"+lists.get(position).getDisableModeId());
+			holder.tv_location.setText(lists.get(position).getAddress().replace("江苏省淮安市金湖县",""));
 			holder.tv_picktime.setText(lists.get(position).getPickTime().replace(".000000",""));
 			Glide.with(HelpPeopleActvitity.this).load(Urls.prefix+"img/"+lists.get(position).getAvatar()).placeholder(R.drawable.defaultavatar).error(R.drawable.defaultavatar).centerCrop().crossFade().into(holder.iv_avatar);
 			holder.btn_pick.setOnClickListener(new View.OnClickListener() {
@@ -344,7 +375,7 @@ public class HelpPeopleActvitity extends AppCompatActivity {
 
 		class myViewholder extends RecyclerView.ViewHolder {
 
-			public TextView tv_name,tv_sex,tv_age,tv_level,tv_tel,tv_picktime,tv_disableModel;
+			public TextView tv_name,tv_sex,tv_age,tv_level,tv_tel,tv_picktime,tv_disableModel,tv_location;
 			public Button btn_pick;
 			public LinearLayout item;
 			public ImageView iv_avatar;
@@ -361,6 +392,7 @@ public class HelpPeopleActvitity extends AppCompatActivity {
 				iv_avatar = (ImageView)itemView.findViewById(R.id.avatar);
 				tv_picktime = (TextView)itemView.findViewById(R.id.tv_picktime);
 				tv_disableModel = (TextView)itemView.findViewById(R.id.tv_disableModel);
+				tv_location = (TextView)itemView.findViewById(R.id.tv_location);
 			}
 		}
 	}

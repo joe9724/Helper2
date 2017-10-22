@@ -1,16 +1,16 @@
 package com.bitekun.helper;
 
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.view.Menu;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.bitekun.helper.R;
 import com.bitekun.helper.bean.HelpPeopleListItem;
 import com.bitekun.helper.util.DensityUtil;
 import com.bitekun.helper.util.Urls;
@@ -18,8 +18,6 @@ import com.bitekun.helper.util.Utils;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
-import org.apache.http.Header;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.Serializable;
@@ -31,15 +29,29 @@ public class LoginActivity extends Activity {
 
 	EditText et_username, et_password;
 	Button btn_login;
-	 int errortimes = 0;
+	int errortimes = 0;
+	private SharedPreferences pref;
+    private SharedPreferences.Editor editor;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 
-		et_username = (EditText) findViewById(R.id.et_username);
-		et_password = (EditText) findViewById(R.id.et_password);
+		et_username = (EditText) findViewById(R.id.et_oldpass);
+		et_password = (EditText) findViewById(R.id.et_newpass);
+        pref= PreferenceManager.getDefaultSharedPreferences(this);
+		if(pref.getString("account","")!=null)
+        {
+            if(pref.getString("account","").length()>0)
+            {
+                et_username.setText(pref.getString("account",""));
+            }
+        }
+
+
+
 		Drawable drawable1 = getResources().getDrawable(R.drawable.username);
 		drawable1.setBounds(0, 0, DensityUtil.dip2px(this,22), DensityUtil.dip2px(this,22));//第一0是距左边距离，第二0是距上边距离，40分别是长宽
 		et_username.setCompoundDrawables(drawable1, null, null, null);//只放左边
@@ -121,6 +133,11 @@ if(Utils.byteArrayToStr(responseBody)!=null)
 				}
 				i = new Intent(LoginActivity.this,CommonMainActivity.class);
 				i.putExtra("item", (Serializable)item);
+				//
+                editor=pref.edit();
+                editor.putString("account",et_username.getText().toString().trim());
+                editor.apply();
+
 				startActivity(i);
 				finish();
 
@@ -131,8 +148,15 @@ if(Utils.byteArrayToStr(responseBody)!=null)
 
 				MyApplication.currentUserName = obj.getString("account");
 
+				MyApplication.area = obj.getString("area");
+
 				MyApplication.workerId = obj.getString("u_id");
+
+				MyApplication.qx = obj.getString("qx");
 				//
+                editor=pref.edit();
+                editor.putString("account",et_username.getText().toString().trim());
+                editor.apply();
 
                 MyApplication.rolename = obj.getString("password");
 				i = new Intent(LoginActivity.this,MainActivity.class);

@@ -11,7 +11,9 @@ import java.util.Locale;
 
 public class Urls {
 
-	public final static String prefix = "http://106.14.2.153/";
+	//public final static String prefix = "http://106.14.2.153/";
+
+	public final static String prefix = "http://101.132.144.234/";
 	
 	public final static String login = prefix+"login?";
 
@@ -36,6 +38,8 @@ public class Urls {
     public final static String record = prefix+"record?idcardNo=";
 
     public final static String peopleDetail = prefix+"peopleDetail?idCardNo=";
+
+    public final static String edit = prefix+"editpass?";
 
 
 
